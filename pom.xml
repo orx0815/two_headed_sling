@@ -23,9 +23,9 @@
     <artifactId>org.apache.sling.starter</artifactId>
     <version>13-SNAPSHOT</version>
 
-    <name>Apache Sling Starter</name>
+    <name>DIY two-headed Apache Sling Starter</name>
     <description>
-        The Sling Starter demo application.
+        Another Sling Starter demo application.
     </description>
 
     <scm>
@@ -47,6 +47,7 @@
         <composum.nodes.version>4.1.2</composum.nodes.version>
         <jackson.version>2.13.3</jackson.version>
         <groovy.version>3.0.12</groovy.version>
+        <peregrine-cms.version>1.0-SNAPSHOT</peregrine-cms.version>
         <!-- skip index generation for all builds except for CI and release -->
         <bnd.index.generation.skip>true</bnd.index.generation.skip>
         <docker.skip>true</docker.skip>
@@ -80,7 +81,7 @@
                 <version>1.6.6</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <replacePropertyVariables>asm.version,jackrabbit.version,groovy.version,oak.version,slf4j.version,composum.nodes.version,jackson.version</replacePropertyVariables>
+                    <replacePropertyVariables>asm.version,jackrabbit.version,groovy.version,oak.version,slf4j.version,composum.nodes.version,jackson.version,peregrine-cms.version</replacePropertyVariables>
                     <aggregates>
                         <aggregate>
                             <classifier>oak_tar</classifier>
@@ -398,6 +399,7 @@
                     <groupId>org.apache.rat</groupId>
                     <artifactId>apache-rat-plugin</artifactId>
                     <configuration>
+                        <skip>true</skip>
                         <excludes combine.children="append">
                             <!-- Exclude sling instance -->
                             <exclude>sling/**</exclude>

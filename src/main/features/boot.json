@@ -151,6 +151,8 @@
 
     ],
     "framework-properties":{
+        "sling.run.mode.install.options":"oak_tar_fds,oak_tar,oak_mongo|local,live,author,publish|notshared,shared",
+        "sling.run.modes":"${sling.runmodes}",
         "localIndexDir":"${sling.home}/repository/index",
         "repository.home":"${sling.home}/repository",
         // export XML packages in addition to JRE version with special versions for backwards-compatibility reasons

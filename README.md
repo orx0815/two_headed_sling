@@ -2,6 +2,35 @@
 
 &#32;[![Build Status](https://ci-builds.apache.org/job/Sling/job/modules/job/sling-org-apache-sling-starter/job/master/badge/icon)](https://ci-builds.apache.org/job/Sling/job/modules/job/sling-org-apache-sling-starter/job/master/)&#32;[![Test Status](https://img.shields.io/jenkins/tests.svg?jobUrl=https://ci-builds.apache.org/job/Sling/job/modules/job/sling-org-apache-sling-starter/job/master/)](https://ci-builds.apache.org/job/Sling/job/modules/job/sling-org-apache-sling-starter/job/master/test/?width=800&height=600)&#32;[![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=apache_sling-org-apache-sling-starter&metric=alert_status)](https://sonarcloud.io/dashboard?id=apache_sling-org-apache-sling-starter)&#32;[![JavaDoc](https://www.javadoc.io/badge/org.apache.sling/org.apache.sling.starter.svg)](https://www.javadoc.io/doc/org.apache.sling/org.apache.sling.starter)&#32;[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.apache.sling/org.apache.sling.starter/badge.svg)](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.apache.sling%22%20a%3A%22org.apache.sling.starter%22) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
+
+Sling Starter PoC with Peregrine Cms on top
+=====
+
+# Background
+This is a replacement for the [Peregrine-Builder](https://github.com/peregrine-cms/peregrine-builder).
+(Which is also a a customized version of [sling-org-apache-sling-starter](https://github.com/apache/sling-org-apache-sling-starter).)
+
+Peregrine-Builder only adds the bundles sling.distribution and jackrabbit:oak-auth-external to the feature-archive and "sling.run.modes" framework-properties.
+
+Against the resulting launcher you can install [peregrine-cms](https://github.com/headwirecom/peregrine-cms) by running ´mvn install -P autoInstallPackage´ there.
+(This is using [outdated version of wcmio-content-package-maven-plugin](https://wcm-io.atlassian.net/wiki/spaces/WCMIO/pages/91586585/Migrate+content+package+projects+from+wcmio-content-package-maven-plugin+to+Jackrabbit+filevault-package-maven-plugin))
+Peregrine-cms is also using npm/nodejs based [slingpackager](https://github.com/apache/sling-slingpackager) during docker-build to install content-packages with included bundles.
+
+The goal here is to bake peregrine right into the feature archive.
+
+# Build and run
+You need [my peregrine-cms fork](https://github.com/orx0815/peregrine-cms). 
+(only has ONE content-package migrated to [Jackrabbit FileVault Package Maven Plugin](https://jackrabbit.apache.org/filevault-package-maven-plugin/) to make it work)
+In Composum-package-manager you still need to manually activate 5 packages: http://localhost:8080/bin/packages.html
+
+In the peregrine-cms fork run 'mvn install' to have all required artefacts in your local .m2 repo.
+
+In here "mvn clean install -DskipTests". (Integration-tests need a look at, once all packages start).
+
+There are example start-skipts. 
+
+
+
 # Apache Sling Starter
 
 This module is part of the [Apache Sling](https://sling.apache.org) project.
