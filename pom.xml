@@ -44,7 +44,17 @@
         <jackrabbit.version>2.20.6</jackrabbit.version>
         <oak.version>1.44.0</oak.version>
         <slf4j.version>1.7.36</slf4j.version>
+        
         <composum.nodes.version>4.1.2</composum.nodes.version>
+        <composum.platform.version>1.6.0</composum.platform.version>
+        <composum.pages.version>1.4.1</composum.pages.version>
+        <composum.pages.options.version>1.4.1</composum.pages.options.version>
+        <composum.assets.version>1.3.1</composum.assets.version>
+        <composum.sites.version>1.0.0-SNAPSHOT</composum.sites.version>
+        <cpm.platform.htl.version>1.1.1</cpm.platform.htl.version>
+        
+        
+        
         <jackson.version>2.13.3</jackson.version>
         <groovy.version>3.0.12</groovy.version>
         <peregrine-cms.version>1.0-SNAPSHOT</peregrine-cms.version>
@@ -75,13 +85,14 @@
                     </filesets>
                 </configuration>
             </plugin>
+            
             <plugin>
                 <groupId>org.apache.sling</groupId>
                 <artifactId>slingfeature-maven-plugin</artifactId>
                 <version>1.6.6</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <replacePropertyVariables>asm.version,jackrabbit.version,groovy.version,oak.version,slf4j.version,composum.nodes.version,jackson.version,peregrine-cms.version</replacePropertyVariables>
+                    <replacePropertyVariables>asm.version,jackrabbit.version,groovy.version,oak.version,slf4j.version,composum.nodes.version,composum.platform.version,composum.pages.version,composum.pages.options.version,composum.assets.version,composum.sites.version,cpm.platform.htl.version,jackson.version,peregrine-cms.version</replacePropertyVariables>
                     <aggregates>
                         <aggregate>
                             <classifier>oak_tar</classifier>

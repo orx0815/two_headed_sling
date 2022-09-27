@@ -17,4 +17,4 @@
 # specific language governing permissions and limitations
 # under the License.
 #
-java -jar --add-opens java.base/java.lang=ALL-UNNAMED target/dependency/org.apache.sling.feature.launcher.jar -f target/slingfeature-tmp/feature-oak_tar.json
+java -jar --add-opens java.base/java.lang=ALL-UNNAMED target/dependency/org.apache.sling.feature.launcher.jar -f target/slingfeature-tmp/feature-oak_tar.json -D sling.runmodes=author,notshared,oak_tar_fds

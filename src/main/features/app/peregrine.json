@@ -74,7 +74,7 @@
   "content-packages:ARTIFACTS|required": [
     {
       "id": "com.peregrine-cms:graphql.ui.apps:zip:${peregrine-cms.version}",
-      "start-order":"20"
+      "start-order":"22"
     },
     {
       "id": "com.peregrine-cms:base.ui.apps:zip:${peregrine-cms.version}",
@@ -82,39 +82,39 @@
     },
     {
       "id": "com.peregrine-cms:felib.ui.apps:zip:${peregrine-cms.version}",
-      "start-order":"20"
+      "start-order":"23"
     },
     {
       "id": "com.peregrine-cms:pagerender-vue.ui.apps:zip:${peregrine-cms.version}",
-      "start-order":"21"
+      "start-order":"23"
     },
     {
       "id": "com.peregrine-cms:pagerender-server.ui.apps:zip:${peregrine-cms.version}",
-      "start-order":"21"
+      "start-order":"23"
     },
     {
       "id": "com.peregrine-cms:admin.ui.apps:zip:${peregrine-cms.version}",
-      "start-order":"21"
+      "start-order":"20"
     },
     {
       "id": "com.peregrine-cms:admin.ui.materialize:zip:${peregrine-cms.version}",
-      "start-order":"20"
+      "start-order":"23"
     },
     {
       "id": "com.peregrine-cms:admin.sling.ui.apps:zip:${peregrine-cms.version}",
-      "start-order":"20"
+      "start-order":"21"
     },
     {
       "id": "com.peregrine-cms:example-vue.ui.apps:zip:${peregrine-cms.version}",
-      "start-order":"20"
+      "start-order":"24"
     },
     {
       "id": "com.themeclean:themeclean-ui.apps:zip:${peregrine-cms.version}",
-      "start-order":"21"
+      "start-order":"24"
     },
     {
       "id": "com.themecleanflex:themecleanflex.ui.apps:zip:${peregrine-cms.version}",
-      "start-order":"21"
+      "start-order":"24"
     }
   ],
   "configurations":{
