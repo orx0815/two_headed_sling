@@ -1,35 +1,60 @@
 [![Apache Sling](https://sling.apache.org/res/logos/sling.png)](https://sling.apache.org)
-
-&#32;[![Build Status](https://ci-builds.apache.org/job/Sling/job/modules/job/sling-org-apache-sling-starter/job/master/badge/icon)](https://ci-builds.apache.org/job/Sling/job/modules/job/sling-org-apache-sling-starter/job/master/)&#32;[![Test Status](https://img.shields.io/jenkins/tests.svg?jobUrl=https://ci-builds.apache.org/job/Sling/job/modules/job/sling-org-apache-sling-starter/job/master/)](https://ci-builds.apache.org/job/Sling/job/modules/job/sling-org-apache-sling-starter/job/master/test/?width=800&height=600)&#32;[![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=apache_sling-org-apache-sling-starter&metric=alert_status)](https://sonarcloud.io/dashboard?id=apache_sling-org-apache-sling-starter)&#32;[![JavaDoc](https://www.javadoc.io/badge/org.apache.sling/org.apache.sling.starter.svg)](https://www.javadoc.io/doc/org.apache.sling/org.apache.sling.starter)&#32;[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.apache.sling/org.apache.sling.starter/badge.svg)](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.apache.sling%22%20a%3A%22org.apache.sling.starter%22) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-
-
-Sling Starter PoC with Peregrine Cms on top
+Sling-starter PoC with TWO website-editors on top
 =====
 
-# Background
-This is a replacement for the [Peregrine-Builder](https://github.com/peregrine-cms/peregrine-builder).
-(Which is also a a customized version of [sling-org-apache-sling-starter](https://github.com/apache/sling-org-apache-sling-starter).)
+This project creates a [Sling feature model application](https://github.com/apache/sling-org-apache-sling-feature/blob/master/readme.md).
+It produces docker images or a ~200Mb Feature-Archive that can be launched with the sling-feature-launcher.  
+  
+Here we bake two open-source WYSIWYG website editors into the same application. Because we can.
 
-Peregrine-Builder only adds the bundles sling.distribution and jackrabbit:oak-auth-external to the feature-archive and "sling.run.modes" framework-properties.
+1)  
+[Peregrine](https://www.peregrine-cms.com) with a VueJs-SPA approach from [headwire](https://www.headwire.com).
+(see [github](https://github.com/headwirecom/peregrine-cms), [adapt.to talk](https://adapt.to/2019/en/schedule/current-state-of-peregrine-cms.html) )  
+   
+2)  
+[Composum-Pages](https://www.composum.com/home.html) with a normal html-page approach from [ist-software](https://www.ist-software.com).
+Composum is friends with Sling standalone-apps anyway. They provide a node-browser, a content-package- and a user-manager for open-source Sling. 
+So that is already used by the plain sling-starter and peregrine-cms, so adding the pages feature seems quite natural.
 
-Against the resulting launcher you can install [peregrine-cms](https://github.com/headwirecom/peregrine-cms) by running ´mvn install -P autoInstallPackage´ there.
-(This is using [outdated version of wcmio-content-package-maven-plugin](https://wcm-io.atlassian.net/wiki/spaces/WCMIO/pages/91586585/Migrate+content+package+projects+from+wcmio-content-package-maven-plugin+to+Jackrabbit+filevault-package-maven-plugin))
-Peregrine-cms is also using npm/nodejs based [slingpackager](https://github.com/apache/sling-slingpackager) during docker-build to install content-packages with included bundles.
+---
+There is also the official [Apache Sling - CMS Reference App](https://github.com/apache/sling-org-apache-sling-app-cms) that comes also with a WYSIWYG editor. [adapt.to talk](https://adapt.to/2021/en/schedule/sling-cms-building-a-simple-cms-on-apache-sling.html)  
+It's not used here but it's still worth looking into it to get some general concepts about Sling.
 
-The goal here is to bake peregrine right into the feature archive.
+---
+
 
 # Build and run
-You need [my peregrine-cms fork](https://github.com/orx0815/peregrine-cms). 
-(only has ONE content-package migrated to [Jackrabbit FileVault Package Maven Plugin](https://jackrabbit.apache.org/filevault-package-maven-plugin/) to make it work)
-In Composum-package-manager you still need to manually activate 5 packages: http://localhost:8080/bin/packages.html
+You need [my peregrine-cms fork](https://github.com/orx0815/peregrine-cms).
+(Only that has ONE content-package migrated to [Jackrabbit FileVault Package Maven Plugin](https://jackrabbit.apache.org/filevault-package-maven-plugin/) to make it work)
+  
+**In the peregrine-cms fork** run
 
-In the peregrine-cms fork run 'mvn install' to have all required artefacts in your local .m2 repo.
+    mvn clean install
+to have the required artefacts in your local .m2 repo.  
 
-In here "mvn clean install -DskipTests". (Integration-tests need a look at, once all packages start).
+**In here**
 
-There are example start-skipts. 
+    mvn clean install -DskipTests"
+(Integration-tests need a look at).
 
+There is an [example start-skipt](start.sh):
 
+    target/dependency/org.apache.sling.feature.launcher/bin/launcher -f target/slingfeature-tmp/feature-oak_tar.json -D sling.runmodes=author,notshared,oak_tar_fds
+
+You can access it on port 8080: http://localhost:8080  
+It starts with the Peregrine Loging screen. (user:passwd is admin:admin)  
+Over the Tools section you can get into composum or via this link:
+http://localhost:8080/bin/pages.html
+  
+  
+  
+END sling-fork description  
+  
+---
+
+[![Apache Sling](https://sling.apache.org/res/logos/sling.png)](https://sling.apache.org)
+
+&#32;[![Build Status](https://ci-builds.apache.org/job/Sling/job/modules/job/sling-org-apache-sling-starter/job/master/badge/icon)](https://ci-builds.apache.org/job/Sling/job/modules/job/sling-org-apache-sling-starter/job/master/)&#32;[![Test Status](https://img.shields.io/jenkins/tests.svg?jobUrl=https://ci-builds.apache.org/job/Sling/job/modules/job/sling-org-apache-sling-starter/job/master/)](https://ci-builds.apache.org/job/Sling/job/modules/job/sling-org-apache-sling-starter/job/master/test/?width=800&height=600)&#32;[![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=apache_sling-org-apache-sling-starter&metric=alert_status)](https://sonarcloud.io/dashboard?id=apache_sling-org-apache-sling-starter)&#32;[![JavaDoc](https://www.javadoc.io/badge/org.apache.sling/org.apache.sling.starter.svg)](https://www.javadoc.io/doc/org.apache.sling/org.apache.sling.starter)&#32;[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.apache.sling/org.apache.sling.starter/badge.svg)](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.apache.sling%22%20a%3A%22org.apache.sling.starter%22) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 # Apache Sling Starter
 
@@ -59,7 +84,7 @@ Hint: You can defer stopping the instance after running the ITs with argument `-
 
 2) Start Sling backed by an Oak SegmentStore with
 
-        java -jar target/dependency/org.apache.sling.feature.launcher.jar -f target/slingfeature-tmp/feature-oak_tar.json
+        target/dependency/org.apache.sling.feature.launcher/bin/launcher -f target/slingfeature-tmp/feature-oak_tar.json
 
 3) Browse Sling in:
 
@@ -67,7 +92,7 @@ Hint: You can defer stopping the instance after running the ITs with argument `-
 
 For MongoDB support replace the launch command with
 
-    java -jar target/dependency/org.apache.sling.feature.launcher.jar -f target/slingfeature-tmp/feature-oak_mongo.json
+    target/dependency/org.apache.sling.feature.launcher/bin/launcher -f target/slingfeature-tmp/feature-oak_mongo.json
 
 This expects a MongoDB server to be running, search for `mongodb://` in the feature files for the expected URL
 (currently `mongodb://localhost:27017`).
@@ -136,7 +161,7 @@ start with the `nosample_base` aggregate, which contains:
 
 For instance, launching an empty Sling Starter with segment persistence can be achieved by running
 
-    java -jar target/dependency/org.apache.sling.feature.launcher.jar -f target/slingfeature-tmp/feature-nosample_base.json,target/slingfeature-tmp/feature-oak_persistence_sns.json
+    target/dependency/org.apache.sling.feature.launcher/bin/launcher -f target/slingfeature-tmp/feature-nosample_base.json,target/slingfeature-tmp/feature-oak_persistence_sns.json
     
 Your own feature files can be added to the feature list.
 
