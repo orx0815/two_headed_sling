@@ -75,7 +75,7 @@
             "start-order":"15"
         },
         {
-            "id":"org.apache.sling:org.apache.sling.engine:2.11.0",
+            "id":"org.apache.sling:org.apache.sling.engine:2.12.0",
             "start-order":"20"
         },
         {
@@ -179,7 +179,7 @@
             "start-order":"5"
         },
         {
-            "id":"org.apache.sling:org.apache.sling.auth.core:1.5.6",
+            "id":"org.apache.sling:org.apache.sling.auth.core:1.6.0",
             "start-order":"5"
         },
         {
@@ -227,11 +227,11 @@
             "start-order":"20"
         },
         {
-            "id":"org.apache.sling:org.apache.sling.repoinit.parser:1.7.0",
+            "id":"org.apache.sling:org.apache.sling.repoinit.parser:1.8.0",
             "start-order":"20"
         },
         {
-            "id":"org.apache.sling:org.apache.sling.jcr.repoinit:1.1.40",
+            "id":"org.apache.sling:org.apache.sling.jcr.repoinit:1.1.42",
             "start-order":"20"
         }
     ],

@@ -38,6 +38,7 @@
     <properties>
         <sling.java.version>8</sling.java.version>
         <starter.min.bundles.count>126</starter.min.bundles.count>
+        <sling.feature.launcher.version>1.2.4</sling.feature.launcher.version>
 
         <!-- versions to be replaced in the feature files -->
         <asm.version>9.3</asm.version>
@@ -89,7 +90,7 @@
             <plugin>
                 <groupId>org.apache.sling</groupId>
                 <artifactId>slingfeature-maven-plugin</artifactId>
-                <version>1.6.6</version>
+                <version>1.6.8</version>
                 <extensions>true</extensions>
                 <configuration>
                     <replacePropertyVariables>asm.version,jackrabbit.version,groovy.version,oak.version,slf4j.version,composum.nodes.version,composum.platform.version,composum.pages.version,composum.pages.options.version,composum.assets.version,composum.sites.version,cpm.platform.htl.version,jackson.version,peregrine-cms.version</replacePropertyVariables>
@@ -178,14 +179,25 @@
                     <execution>
                         <id>prepare-feature-launcher</id>
                         <goals>
-                            <goal>get</goal>
-                            <goal>copy</goal>
+                            <goal>unpack</goal>
                         </goals>
                         <phase>package</phase>
                         <configuration>
-                            <!-- 1.1.28 and newer versions don't work out-of-the-box due to SLING-10956 -->
-                            <artifact>org.apache.sling:org.apache.sling.feature.launcher:1.1.26</artifact>
-                            <stripVersion>true</stripVersion>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.apache.sling</groupId>
+                                    <artifactId>org.apache.sling.feature.launcher</artifactId>
+                                    <version>${sling.feature.launcher.version}</version>
+                                    <type>tar.gz</type>
+                                    <!-- remove the version number from the unpacked folder -->
+                                    <fileMappers>
+                                        <org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
+                                            <pattern>\Qorg.apache.sling.feature.launcher-${sling.feature.launcher.version}\E</pattern>
+                                            <replacement>org.apache.sling.feature.launcher</replacement>
+                                        </org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
+                                    </fileMappers>
+                                </artifactItem>
+                            </artifactItems>
                         </configuration>
                     </execution>
                 </executions>
@@ -257,6 +269,7 @@
                 <version>0.39.0</version>
                 <configuration>
                     <skip>${docker.skip}</skip>
+                    <containerNamePattern>%e</containerNamePattern>
                     <images>
                         <image>
                             <alias>mongo</alias>
@@ -270,13 +283,6 @@
                                     <time>60000</time>
                                 </wait>
                             </run>
-                        </image>
-                        <image>
-                            <name>apache/sling:${docker.label}</name>
-                            <build>
-                                <dockerFile>Dockerfile</dockerFile>
-                                <contextDir>${project.basedir}</contextDir>
-                            </build>
                         </image>
                     </images>
                     <stopMode>kill</stopMode>
@@ -304,6 +310,18 @@
                         <goals>
                             <goal>build</goal>
                         </goals>
+                        <configuration>
+                            <!-- Configure the sling image only for build, we don't want to run it  -->
+                            <images>
+                                <image>
+                                    <name>apache/sling:${docker.label}</name>
+                                    <build>
+                                        <dockerFile>Dockerfile</dockerFile>
+                                        <contextDir>${project.basedir}</contextDir>
+                                    </build>
+                                </image>
+                            </images>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -311,7 +329,7 @@
             <plugin>
                 <groupId>org.apache.sling</groupId>
                 <artifactId>feature-launcher-maven-plugin</artifactId>
-                <version>0.1.2</version>
+                <version>0.1.4</version>
                 <configuration>
                     <launches>
                         <launch>
@@ -326,6 +344,7 @@
                             <launcherArguments>
                                 <frameworkProperties>
                                     <org.osgi.service.http.port>${http.port}</org.osgi.service.http.port>
+                                    <org.apache.felix.http.jetty.responseBufferSize>5000000</org.apache.felix.http.jetty.responseBufferSize>
                                 </frameworkProperties>
                             </launcherArguments>
                             <startTimeoutSeconds>${it.startTimeoutSeconds}</startTimeoutSeconds>
@@ -343,6 +362,7 @@
                             <launcherArguments>
                                 <frameworkProperties>
                                     <org.osgi.service.http.port>${http.port.mongo}</org.osgi.service.http.port>
+                                    <org.apache.felix.http.jetty.responseBufferSize>5000000</org.apache.felix.http.jetty.responseBufferSize>
                                 </frameworkProperties>
                             </launcherArguments>
                             <environmentVariables>
