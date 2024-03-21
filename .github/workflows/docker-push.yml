@@ -18,10 +18,7 @@
 name: Push Sling Starter Docker images
 
 on:
-  push:
-    branches:
-      - feature/two_headed_sling
-  workflow_dispatch:
+  workflow_call:
 
 jobs:
   sling-starter-push-image:
