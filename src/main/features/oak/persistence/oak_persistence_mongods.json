@@ -1,11 +1,11 @@
 {
     "bundles":[
          {
-             "id":"com.h2database:h2-mvstore:2.1.214",
+             "id":"com.h2database:h2-mvstore:2.2.224",
              "start-order":"15"
         },
         {
-             "id":"org.mongodb:mongo-java-driver:3.12.11",
+             "id":"org.mongodb:mongo-java-driver:3.12.14",
              "start-order":"15"
          }
     ],
