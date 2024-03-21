@@ -152,7 +152,7 @@ following environment variables:
 > running Sling Starter in debug mode with custom memory settings
 
 ```bash
-docker run -p 8080:8080 -p 5005:5005 -e JAVA_DEBUG_PORT=5005 -e EXTRA_JAVA_OPTS='-Xms256m -Xmx2048m' apache/sling:snapshot
+docker run -p 8080:8080 -p 5005:5005 -e JAVA_DEBUG_PORT=5005 -e EXTRA_JAVA_OPTS='-Xms256m -Xmx2048m' orx0815dockerhub/slingstuff:snapshot
 ```
 
 ## Building the Docker image

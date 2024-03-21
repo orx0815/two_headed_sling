@@ -7,6 +7,14 @@
     {
       "id": "org.apache.sling:org.apache.sling.jcr.packageinit:1.0.4",
       "start-order": "20"
+    },
+    {
+      "id": "com.google.code.gson:gson:2.8.5",
+      "start-order": "20"
+    },
+    {
+      "id": "com.google.guava:guava:15.0",
+      "start-order": "20"
     }
   ],
   "content-packages:ARTIFACTS|required": [
@@ -58,6 +66,7 @@
       "id": "com.composum.platform:cpm-platform-htl-package:zip:${cpm.platform.htl.version}",
       "start-order": "45"
     }
+    
   ]
 }
  

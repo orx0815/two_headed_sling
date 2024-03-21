@@ -18,7 +18,7 @@
 # note that the project needs to be built once with `mvn clean install -Ddocker.skip=false`
 services:
     sling:
-        image: apache/sling:snapshot
+        image: orx0815dockerhub/slingstuff:snapshot
         ports:
             - "8080:8080"
             - "5005:5005"
