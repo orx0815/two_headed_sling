@@ -47,4 +47,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Push Docker image
+        env:
+          GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: mvn --batch-mode clean install -Ddocker.platforms=linux/amd64,linux/arm64 -Dmaven.test.skip=true -Ddocker.skip=false -Ddocker.skip.push=false
