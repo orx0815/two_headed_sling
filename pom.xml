@@ -70,7 +70,7 @@
         <docker.skip>true</docker.skip>
         <!-- check docker.skip.push in https://dmp.fabric8.io/ -->
         <docker.skip.push>true</docker.skip.push>
-        <docker.image.name>orx0815dockerhub/slingstuff</docker.image.name>
+        <docker.image.name>ghcr.io/orx0815/two_headed_sling</docker.image.name>
         <docker.image.tag>snapshot</docker.image.tag>
         <!-- pass a list of platforms to enable multi-arch builds: linux/amd64,linux/arm64 -->
         <docker.platforms></docker.platforms>
