@@ -17,4 +17,4 @@
 # specific language governing permissions and limitations
 # under the License.
 #
-target/dependency/org.apache.sling.feature.launcher/bin/launcher -f target/slingfeature-tmp/feature-oak_tar.json -D sling.runmodes=author,notshared,oak_tar_fds
+./target/dependency/org.apache.sling.feature.launcher/bin/launcher -f ./target/org.apache.sling.starter-13-SNAPSHOT-oak_tar_far.far -D sling.runmodes=author,notshared,oak_tar_fds

@@ -47,4 +47,4 @@ jobs:
       - name: Push Docker image
         run: |
           version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
-          mvn --batch-mode clean install -Ddocker.platforms=linux/amd64,linux/arm64 -Dmaven.test.skip=true -Ddocker.skip=false -Ddocker.skip.push=false -Ddocker.image.tag=${version} -Ddocker.image.extra.tag=latest
+          mvn --batch-mode clean install -P github -Ddocker.platforms=linux/amd64,linux/arm64 -Dmaven.test.skip=true -Ddocker.skip=false -Ddocker.skip.push=false -Ddocker.image.tag=${version} -Ddocker.image.extra.tag=latest

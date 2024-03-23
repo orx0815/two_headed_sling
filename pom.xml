@@ -585,15 +585,19 @@
                 </repository>
             </repositories>
         </profile>
+        <profile>
+            <!-- enabled to build on github -->
+            <id>github</id>
+            <repositories>
+              <repository>
+                <id>github</id>
+                <url>https://maven.pkg.github.com/orx0815/peregrine-cms</url>
+                <snapshots>
+                  <enabled>true</enabled>
+                </snapshots>
+              </repository>
+            </repositories>
+        </profile>
     </profiles>
     
-    <repositories>
-      <repository>
-        <id>github</id>
-        <url>https://maven.pkg.github.com/orx0815/peregrine-cms</url>
-        <snapshots>
-          <enabled>true</enabled>
-        </snapshots>
-      </repository>
-    </repositories>
 </project>

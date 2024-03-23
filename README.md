@@ -2,6 +2,10 @@
 Sling-starter PoC with TWO website-editors on top
 =====
 
+[![Try Sling CMS on Gitpod](https://img.shields.io/badge/Gitpod-Try%20SliMpoGrine%20CMS%20Online-0a4d2c?logo=gitpod)](https://gitpod.io/#https://github.com/orx0815/two_headed_sling) 
+
+
+
 This project creates a [Sling feature model application](https://github.com/apache/sling-org-apache-sling-feature/blob/master/readme.md).
 It produces docker images or a ~200Mb Feature-Archive that can be launched with the sling-feature-launcher.  
   
